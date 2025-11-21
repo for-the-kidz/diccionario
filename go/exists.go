@@ -29,9 +29,14 @@ func (s *Server) WordExists(c *gin.Context) {
 
 	resp := ExistsResponse{Exists: false}
 
+	// Convert to lowercase for case-insensitive comparison
+	wordLower := strings.ToLower(word)
+
+	// TODO: use word exists function - use a better name
 	for _, w := range wordlist {
-		if strings.HasPrefix(w, word) {
+		if strings.ToLower(w) == wordLower {
 			resp.Exists = true
+			break // Found exact match, no need to continue
 		}
 	}
 
