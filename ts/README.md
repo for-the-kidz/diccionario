@@ -4,7 +4,9 @@ A simple English word list control plane server.
 
 ## Typescript Instructions
 
-From the root of this repo run:
+Run `npm install --save-dev` within the `ts` directory to install dependencies.
+
+Then, from the root of this repo run:
 
 ```sh
 docker build -f ts/Dockerfile -t diccionario .
