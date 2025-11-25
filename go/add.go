@@ -1,7 +1,6 @@
 package diccionario
 
 import (
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -17,11 +16,9 @@ type AddRequest struct {
 func (s *Server) Add(c *gin.Context) {
 	var req AddRequest
 	if err := c.BindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, ApiError{Err: err, Desc: "unable to parse request"})
+		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
-
-	log.Println("retrived word:", req.Word)
 
 	// implement your logic here
 }

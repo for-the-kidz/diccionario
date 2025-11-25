@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# compiled output
+dist/
+
+# test coverage
+coverage/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment files
+.env
+.env.*
+
+# editor and OS files
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# TypeScript
+*.tsbuildinfo

@@ -1,7 +1,6 @@
 package diccionario
 
 import (
-	"log"
 	"net/http"
 	"strings"
 
@@ -19,11 +18,9 @@ type MatchesResponse struct {
 func (s *Server) Matches(c *gin.Context) {
 	prefix := strings.ToLower(c.Param("prefix"))
 
-	log.Println("checking for matches for prefix:", prefix)
-
 	wordlist, err := s.w.GetWords()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, ApiError{Err: err, Desc: "unable to retrieve word list"})
+		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
 

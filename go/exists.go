@@ -1,7 +1,6 @@
 package diccionario
 
 import (
-	"log"
 	"net/http"
 	"strings"
 
@@ -19,11 +18,9 @@ type ExistsResponse struct {
 func (s *Server) WordExists(c *gin.Context) {
 	word := c.Param("word")
 
-	log.Println("checking if word exists:", word)
-
 	wordlist, err := s.w.GetWords()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, ApiError{Err: err, Desc: "unable to retrieve word list"})
+		c.String(http.StatusBadRequest, err.Error())
 		return
 	}
 
