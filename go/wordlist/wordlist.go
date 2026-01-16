@@ -27,12 +27,12 @@ func New(filename string) WordList {
 // AddWord persists a new word to the existing list.
 func (w *wordListImpl) AddWord(word string) (err error) {
 	var f *os.File
-	if f, err = os.OpenFile(w.filename, os.O_APPEND, 0644); err != nil {
+	if f, err = os.OpenFile(w.filename, os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644); err != nil {
 		return
 	}
 	defer f.Close()
 
-	if _, err = f.Write([]byte(word)); err != nil {
+	if _, err = f.WriteString(word + "\n"); err != nil {
 		return
 	}
 
@@ -47,15 +47,16 @@ func (w *wordListImpl) GetWords() (words []string, err error) {
 	}
 	defer f.Close()
 
-	r := bufio.NewReader(f)
-
-	for i := 0; i < 100000; i++ {
-		var s string
-		if s, err = r.ReadString('\n'); err != nil {
-			return
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		word := strings.TrimSpace(scanner.Text())
+		if word != "" {
+			words = append(words, word)
 		}
+	}
 
-		words = append(words, strings.TrimSpace(s))
+	if err = scanner.Err(); err != nil {
+		return
 	}
 
 	return

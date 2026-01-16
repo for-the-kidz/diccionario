@@ -17,7 +17,7 @@ type Server struct {
 func NewServer() (s *Server) {
 	s = &Server{
 		r: gin.Default(),
-		w: wordlist.New("/words.txt"),
+		w: wordlist.New("/Users/nithinkatla00/My-projects/diccionario/words.txt"),
 	}
 
 	s.r.GET("/ping", func(c *gin.Context) {
