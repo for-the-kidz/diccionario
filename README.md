@@ -79,13 +79,11 @@ To exit the terminal session, press Ctrl+D in the terminal where it's running.
 
 All of the Typescript-related code is in the `ts` directory.
 
-Run `npm install --save-dev` within the `ts` directory to install dependencies.
-
-Then, from the root of this repo run:
+From the root of this repo run:
 
 ```sh
 docker build -f ts/Dockerfile -t diccionario .
-docker run -it -p 5000:5000 -v ./ts:/usr/src/diccionario diccionario
+docker run -it -p 5000:5000 -v ./ts:/usr/src/diccionario -v /usr/src/diccionario/node_modules diccionario
 ```
 
 The server will be available at http://localhost:5000.
