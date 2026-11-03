@@ -1,0 +1,19 @@
+.gitattributes
+  s_3dcbbda88ec6d1::t_4adfcc88724ecb 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "88e81b6aabe52ec6012754e324320a149d3883e7",
+  "prompts": {},
+  "sessions": {
+    "s_3dcbbda88ec6d1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "487ba67c-8807-4543-8627-e652e4c26c64",
+        "model": "unknown"
+      },
+      "human_author": "matt price <mattprice@cloudflare.com>"
+    }
+  }
+}
