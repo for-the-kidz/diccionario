@@ -57,8 +57,7 @@ All of the Go-related code is in the `go` directory.
 From the root of this repo run:
 
 ```sh
-docker build -f go/Dockerfile -t diccionario .
-docker run -it -p 8080:8080 -v ./go:/usr/src/diccionario diccionario
+docker compose up --build go
 ```
 
 The server will be available at http://localhost:8080.
@@ -70,7 +69,7 @@ To stop the server, press Ctrl+C in the terminal where it's running.
 To access the running container, run:
 
 ```sh
-docker exec -it `docker ps | grep diccionario | awk '{print $1}'` bash
+docker compose exec go bash
 ```
 
 To exit the terminal session, press Ctrl+D in the terminal where it's running.
@@ -82,19 +81,20 @@ All of the Typescript-related code is in the `ts` directory.
 From the root of this repo run:
 
 ```sh
-docker build -f ts/Dockerfile -t diccionario .
-docker run -it -p 5000:5000 -v ./ts:/usr/src/diccionario -v /usr/src/diccionario/node_modules diccionario
+docker compose up --build --renew-anon-volumes ts
 ```
 
 The server will be available at http://localhost:5000.
 It will automatically reload when you make changes to the source code.
+(`--renew-anon-volumes` gives the container a fresh copy of the image's
+`node_modules`, so dependency changes show up after a rebuild.)
 
 To stop the server, press Ctrl+C in the terminal where it's running.
 
 To access the running container, run:
 
 ```sh
-docker exec -it `docker ps | grep diccionario | awk '{print $1}'` bash
+docker compose exec ts bash
 ```
 
 To exit the terminal session, press Ctrl+D in the terminal where it's running.
