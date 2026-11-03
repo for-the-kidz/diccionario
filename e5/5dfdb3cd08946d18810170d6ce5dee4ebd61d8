@@ -1,0 +1,21 @@
+README.md
+  s_3dcbbda88ec6d1::t_eeded2cc6a26a8 60,72,84,89-90,97
+compose.yaml
+  s_3dcbbda88ec6d1::t_5f8e54888176e9 1-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e55dfdb3cd08946d18810170d6ce5dee4ebd61d8",
+  "prompts": {},
+  "sessions": {
+    "s_3dcbbda88ec6d1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "487ba67c-8807-4543-8627-e652e4c26c64",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "matt price <mattprice@cloudflare.com>"
+    }
+  }
+}
