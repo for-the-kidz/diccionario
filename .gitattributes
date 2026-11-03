@@ -1,0 +1,4 @@
+# Everything runs inside Linux containers, so check files out with LF line
+# endings on every OS. Otherwise Git for Windows converts them to CRLF and
+# every word read from words.txt ends up with a trailing \r.
+* text=auto eol=lf

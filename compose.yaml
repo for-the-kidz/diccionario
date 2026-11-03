@@ -1,0 +1,27 @@
+name: diccionario
+
+# Compose resolves the relative host paths below itself, so the same commands
+# work from any shell (bash, zsh, PowerShell, cmd, Git Bash) on any OS.
+services:
+  go:
+    build:
+      context: .
+      dockerfile: go/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./go:/usr/src/diccionario
+    tty: true
+
+  ts:
+    build:
+      context: .
+      dockerfile: ts/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ts:/usr/src/diccionario
+      # Keep the node_modules installed in the image rather than hiding it
+      # behind the bind mount above.
+      - /usr/src/diccionario/node_modules
+    tty: true
